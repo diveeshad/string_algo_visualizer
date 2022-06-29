@@ -6,15 +6,16 @@ body {
 }
 
 span {
-    margin-left: 2px;
-    margin-right: 2px;
-    width: 10px;
+    margin-left: 3px;
+    margin-right: 3px;
+    width: 24px;
     text-align: center;
     display: inline-block;
 }
 
 #ptndiv {
     margin-left: 0px;
+    font-size: 2em;
 }
 
 h1 {
@@ -24,10 +25,12 @@ h1 {
 
 #go {
     background: none;
+    margin-left: 20px;
+    margin-bottom: 30px;
     color: #ffa260;
     border: 2px solid;
     padding: 0.5em 2em;
-    font-size: 1em;
+    font-size: 1.25em;
     transition: color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
@@ -44,5 +47,29 @@ h1 {
     background-color: #5e537a;
     border: none;
     color: #1f1b29;
-    height: 2em;
+    font-size: 1.25em;
+    height: 1.75em;
+    margin-left: 5px;
+}
+
+div {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+#div2 {
+    margin-bottom: 30px;
+}
+
+label {
+    font-size: 1.25em;
+}
+
+#strdiv,
+#index {
+    font-size: 2em;
+}
+
+#res {
+    font-size: 1.25em;
 }

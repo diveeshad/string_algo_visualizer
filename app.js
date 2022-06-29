@@ -4,7 +4,11 @@ function delay(n) {
     });
 }
 
-
+function empty(div) {
+    while (div.lastChild) {
+        div.lastChild.remove();
+    }
+}
 
 document.querySelector('#go').addEventListener('click', async function (evt) {
     let str = document.querySelector('#str').value;
@@ -12,16 +16,11 @@ document.querySelector('#go').addEventListener('click', async function (evt) {
     let res = document.querySelector('#res');
     let strdiv = document.querySelector('#strdiv');
     let pdiv = document.querySelector('#ptndiv');
-    while (strdiv.lastChild) {
-        strdiv.lastChild.remove();
-    }
-    while (pdiv.lastChild) {
-        pdiv.lastChild.remove();
-
-    }
-    while (res.lastChild) {
-        res.lastChild.remove();
-    }
+    let index = document.querySelector('#index');
+    empty(res);
+    empty(strdiv);
+    empty(pdiv);
+    empty(index);
     let ptndiv = document.createElement('div');
     pdiv.appendChild(ptndiv);
     let slen = str.length;
@@ -43,6 +42,10 @@ document.querySelector('#go').addEventListener('click', async function (evt) {
         x.innerText = str[i];
         x.setAttribute('id', `s${i}`);
         strdiv.appendChild(x);
+        const y = document.createElement('span');
+        y.innerText = i;
+        y.setAttribute('id', `i${i}`);
+        index.appendChild(y);
     }
     for (let i = 0; i < plen; i++) {
         const y = document.createElement('span');
@@ -58,7 +61,8 @@ document.querySelector('#go').addEventListener('click', async function (evt) {
             curi.style.color = 'aliceblue';
         }
         let curi = document.querySelector(`#s${i}`);
-        curi.style.color = '#a1e096';
+        curi.style.color = '#6cdde5';
+        document.querySelector(`#i${i}`).style.color = '#6cdde5';
         await delay(0.5);
         if (str[i] == pat[j]) {
             document.querySelector(`#p${j}`).style.color = '#a1e096';
@@ -67,21 +71,22 @@ document.querySelector('#go').addEventListener('click', async function (evt) {
             if (j == plen) {
                 const x = document.createElement('div');
                 x.innerText = "Pattern found at " + (i - j);
+                document.querySelector(`#i${i - j}`).style.color = '#a1e096';
                 res.appendChild(x);
                 await delay(0.5);
-                curmargin += 14 * (j - lps[j - 1]);
+                curmargin += 30 * (j - lps[j - 1]);
                 j = lps[j - 1];
 
             }
         } else if (i < slen && str[i] != pat[j]) {
             document.querySelector(`#p${j}`).style.color = 'red';
             if (j > 0) {
-                curmargin += 14 * (j - lps[j - 1]);
+                curmargin += 30 * (j - lps[j - 1]);
                 j = lps[j - 1];
 
             }
             else {
-                curmargin += 14;
+                curmargin += 30;
                 i++;
             }
         }
