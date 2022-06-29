@@ -1,0 +1,48 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    height: 100vh;
+    background-color: #1f1b29;
+    color: aliceblue;
+}
+
+span {
+    margin-left: 2px;
+    margin-right: 2px;
+    width: 10px;
+    text-align: center;
+    display: inline-block;
+}
+
+#ptndiv {
+    margin-left: 0px;
+}
+
+h1 {
+    text-align: center;
+    color: lightskyblue;
+}
+
+#go {
+    background: none;
+    color: #ffa260;
+    border: 2px solid;
+    padding: 0.5em 2em;
+    font-size: 1em;
+    transition: color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+#go:hover {
+    border-color: #f1ff5c;
+    color: white;
+    box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
+    transform: translateY(-0.25em);
+    cursor: pointer;
+}
+
+#str,
+#pat {
+    background-color: #5e537a;
+    border: none;
+    color: #1f1b29;
+    height: 2em;
+}
