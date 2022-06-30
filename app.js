@@ -43,7 +43,7 @@ document.querySelector('#go').addEventListener('click', async function (evt) {
         x.setAttribute('id', `s${i}`);
         strdiv.appendChild(x);
         const y = document.createElement('span');
-        y.innerText = i;
+        y.innerText = "-";
         y.setAttribute('id', `i${i}`);
         index.appendChild(y);
     }
@@ -58,7 +58,8 @@ document.querySelector('#go').addEventListener('click', async function (evt) {
     while (i < slen) {
         if (i > 0) {
             let curi = document.querySelector(`#s${(i - 1)}`);
-            curi.style.color = 'aliceblue';
+            if (!curi.classList.contains('found'))
+                curi.style.color = 'aliceblue';
         }
         let curi = document.querySelector(`#s${i}`);
         curi.style.color = '#6cdde5';
@@ -70,9 +71,14 @@ document.querySelector('#go').addEventListener('click', async function (evt) {
             j++;
             if (j == plen) {
                 const x = document.createElement('div');
-                x.innerText = "Pattern found at " + (i - j);
-                document.querySelector(`#i${i - j}`).style.color = '#a1e096';
+                x.innerText = "Pattern found at index " + (i - j);
                 res.appendChild(x);
+                for (let k = i - j; k < i; k++) {
+                    document.querySelector(`#s${k}`).setAttribute('class', `found`);
+                    document.querySelector(`#s${k}`).style.color = '#a1e096';
+                }
+                document.querySelector(`#i${i - j}`).style.color = '#a1e096';
+                document.querySelector(`#i${i - j}`).innerText = '*';
                 await delay(0.5);
                 curmargin += 30 * (j - lps[j - 1]);
                 j = lps[j - 1];
@@ -95,10 +101,17 @@ document.querySelector('#go').addEventListener('click', async function (evt) {
         for (let k = j; k < plen; k++) {
             document.querySelector(`#p${k}`).style.color = 'aliceblue';
         }
-        ptndiv.style.transform = `translateX(${curmargin}px)`;
+        if (i < slen)
+            ptndiv.style.transform = `translateX(${curmargin}px)`;
+
         await delay(0.5);
+        if (i - j + plen > slen)
+            break;
     }
-    document.querySelector(`#s${slen - 1}`).style.color = 'aliceblue';
+    for (let i = 0; i < plen; i++)
+        document.querySelector(`#p${i}`).innerText = '';
+    if (!document.querySelector(`#s${slen - 1}`).classList.contains('found'))
+        document.querySelector(`#s${slen - 1}`).style.color = 'aliceblue';
 });
 
 

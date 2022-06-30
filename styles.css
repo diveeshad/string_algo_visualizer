@@ -23,7 +23,7 @@ h1 {
     color: lightskyblue;
 }
 
-#go {
+button {
     background: none;
     margin-left: 20px;
     margin-bottom: 30px;
@@ -34,7 +34,7 @@ h1 {
     transition: color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
-#go:hover {
+button:hover {
     border-color: #f1ff5c;
     color: white;
     box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
@@ -71,5 +71,10 @@ label {
 }
 
 #res {
+    font-size: 1.25em;
+}
+
+p {
+    margin-left: 20px;
     font-size: 1.25em;
 }
